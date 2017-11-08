@@ -1,0 +1,35 @@
+groupadd www
+useradd -g www -s /sbin/nologin -M www
+
+wget http://cn.php.net/distributions/php-5.6.31.tar.gz
+
+tar -zxvf php-5.6.31.tar.gz
+
+yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
+
+cd php-5.6.31
+
+yum install libxml2-devel -y
+
+yum -y install openssl-devel
+
+./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-inline-optimization --disable-debug --disable-rpath --enable-shared --enable-opcache --enable-fpm --with-fpm-user=www --with-fpm-group=www --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-gettext --enable-mbstring --with-iconv --with-mcrypt --with-mhash --with-openssl --enable-bcmath --enable-soap --with-libxml-dir --enable-pcntl --enable-shmop --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-sockets --with-curl --with-zlib --enable-zip --with-bz2 --with-readline
+
+
+http://blog.csdn.net/warthur/article/details/51174939
+http://blog.csdn.net/u010187139/article/details/50885071
+
+http://blog.csdn.net/qq_32347977/article/details/50780199
+
+
+[环境变量]
+php 加入环境变量 /etc/profile 末尾添加 
+PATH=$PATH:/usr/local/php/bin  
+export PATH
+
+
+[添加到系统服务]
+cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
+cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
+chmod +x /etc/init.d/php-fpm
+
