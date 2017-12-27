@@ -1,0 +1,14 @@
+#微信 skill
+
+###判断微信内置浏览器访问
+    首先需要获取微信内置浏览器的User Agent，经过在 iPhone 上微信的浏览器的检测，它的 User Agent：
+    Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Mobile/10B329 MicroMessenger/5.0.1
+####js 判断
+```$xslt
+var userAgent = navigator.userAgent.toLowerCase();
+userAgent.match(/MicroMessenger/i)=="micromessenger"
+```
+####php 判断
+```$xslt
+strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false
+```
