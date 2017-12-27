@@ -12,3 +12,5 @@ userAgent.match(/MicroMessenger/i)=="micromessenger"
 ```$xslt
 strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false
 ```
+
+
